@@ -43,7 +43,7 @@ Explanation: The number "-91283472332" is out of the range of a 32-bit signed in
              Thefore INT_MIN (-231) is returned.
 */
 class MyAtoISolution {
-    public int myAtoi(String str) {
+   public int myAtoi(String str) {
         if(str == null || str.trim().length() == 0) {
             return 0;
         }
@@ -51,7 +51,6 @@ class MyAtoISolution {
         boolean minus = false;
         int i = 0;
         int result = 0;
-        
         if(str.charAt(i) == '-') {
             minus = true;
             i++;
@@ -60,7 +59,7 @@ class MyAtoISolution {
         } else if(!Character.isDigit(str.charAt(i))) {
             return 0;
         }
-        
+
         for(; i< str.length(); i++) {
             if(Character.isDigit(str.charAt(i))) {
                 if(!minus) {
@@ -68,8 +67,7 @@ class MyAtoISolution {
                         return Integer.MAX_VALUE;
                     }
                     result = result * 10;
-
-                    if(result > Integer.MAX_VALUE - (str.charAt(i) - 0)) {
+                    if(result > Integer.MAX_VALUE - (str.charAt(i) - '0')) {
                         return Integer.MAX_VALUE;
                     }
                     result += str.charAt(i) - '0';
@@ -79,7 +77,7 @@ class MyAtoISolution {
                     }
                     result = result * 10;
 
-                    if(-result < Integer.MIN_VALUE + (str.charAt(i) - 0)) {
+                    if(-result < Integer.MIN_VALUE + (str.charAt(i) - '0')) {
                         return Integer.MIN_VALUE;
                     }
                     result += str.charAt(i) - '0';
